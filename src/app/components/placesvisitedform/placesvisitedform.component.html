@@ -1,0 +1,77 @@
+<ion-header>
+  <div class="d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight"><ion-title>Add Places to visit</ion-title></div>
+    <div class="p-2 bd-highlight">
+      <ion-chip outline (click)="dismiss()">
+        <ion-icon name="close-sharp" color="danger"></ion-icon>
+    </ion-chip></div>
+  </div>
+</ion-header>
+<ion-content>
+<form class="ion-padding" [formGroup]="placesVisited">
+  <ion-item>
+    <ion-label color="medium" position="stacked">Visited place</ion-label>
+    <ion-input color="dark" autocapitalize="characters" name="place" formControlName="place" placeholder="ex. Mumbai">
+    </ion-input>
+  </ion-item>
+  <div class="error"
+    *ngIf="placesVisited.get('place').touched && placesVisited.get('place').hasError('required')">
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; Place Name required</small>
+  </div>
+  <ion-item>
+    <ion-label color="medium" position="floating">Date of Journey</ion-label>
+    <ion-datetime color="danger" name="dob1"
+    placeholder="Select Date"
+    display-timezone="utc"
+    formControlName="dateOfJourney"
+    >
+    </ion-datetime>
+  </ion-item>
+  <div class="error"
+    *ngIf="placesVisited.get('dateOfJourney').touched && placesVisited.get('dateOfJourney').hasError('required')">
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; date of journey is required</small>
+  </div>
+  <ion-item>
+    <ion-label color="medium" position="fixed" >Estimated Expense</ion-label>
+    <ion-range color="warning" min="0" max="10000" step="1000" ticks="true" snaps="true" name="estimatedCost" pin="true" formControlName="estimatedCost">
+      <ion-label slot="start">0</ion-label>
+      <ion-label slot="end">10000</ion-label>
+    </ion-range>
+  </ion-item>
+  <div class="error"
+    *ngIf="placesVisited.get('estimatedCost').touched && placesVisited.get('estimatedCost').hasError('required')">
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; EstimatedCost is required</small>
+  </div>
+  <ion-item>
+    <ion-label color="medium" position="fixed" >Experience</ion-label>
+    <ion-range color="danger" min="1" max="3" step="1" ticks="true" snaps="true" name="experience" formControlName="experience">
+      <ion-label slot="start">Boring</ion-label>
+      <ion-label slot="end">Great</ion-label>
+    </ion-range>
+  </ion-item>
+  <div class="error"
+    *ngIf="placesVisited.get('experience').touched && placesVisited.get('experience').hasError('required')">
+    <small>&nbsp;&nbsp;&nbsp;&nbsp; Experience is required</small>
+  </div>
+  <ion-item>
+  <ion-button expand="full">
+    <ion-icon lazy="true" slot="start" name="image"></ion-icon>
+    <ion-label slot="end">Upload Image</ion-label>
+    <input type="file" (change)="loadImageFromDevice($event)" id="file-input"
+      accept="image/png, image/jpeg" name="photo" formControlName="photo">
+  </ion-button>
+  </ion-item>
+  <ion-button
+  shape="round"
+  expand="full"
+  strong="true"
+  color="dark"
+  size="default"
+  (click)="submit()"
+  [disabled]="placesVisited.invalid"
+>
+  <span style="margin: 5% -0%">Submit</span>
+  <!-- Login -->
+</ion-button>
+</form>
+</ion-content>

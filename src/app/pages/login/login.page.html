@@ -1,0 +1,63 @@
+<ion-content>
+  <div class="login-div flex-column-centered">
+    <div class="login-comps">
+      <div class="Branding">
+        <span><h1 class="text-center"><img src="../../assets/images/travel.png" width="20px" height="20px">Yaatra</h1></span>
+      </div><br>
+      <h1 class="text-center">Login</h1>
+      <form method="post" class="flex-column-centered" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+        <ion-input type="text" name="user" id="user" placeholder="Username" formControlName="Username" ></ion-input>
+        <div
+        class="error w-100"
+        *ngIf="
+          LoginForm.get('Username')?.touched &&
+          LoginForm.get('Username')?.hasError('required')
+        "
+      >
+        <small style="color:orange;"> &emsp; Name required</small>
+        <br />
+      </div>
+
+      <div
+        class="error w-100"
+        *ngIf="
+        LoginForm.get('Username')?.touched &&
+        LoginForm.get('Username')?.hasError('pattern')
+        "
+      >
+        <small style="color:orange"> &emsp; Name field accepts only alphbets</small>
+        <br />
+      </div>
+        <ion-input type="password" name="password" id="password" placeholder="Password" formControlName="Password"></ion-input>
+        <div
+        class="error w-100"
+        *ngIf="
+          LoginForm.get('Password')?.touched &&
+          LoginForm.get('Password')?.hasError('required')
+        "
+      >
+        <small style="color:orange;"> &emsp; Password required</small>
+        <br />
+      </div>
+
+      <div
+        class="error w-100"
+        *ngIf="
+        LoginForm.get('Password')?.touched &&
+        LoginForm.get('Password')?.hasError('pattern')
+        "
+      >
+        <small style="color:orange"> &emsp; Password accepts only alphbets</small>
+        <br />
+      </div>
+        <ion-button type="submit" value="Login" [disabled]="!LoginForm.valid">Login</ion-button>
+        <!-- <button class="submit" type="submit" >Submit</button> -->
+      </form>
+      <!-- <a href="#">
+        <p class="text-center">Forgot Password?</p>
+      </a> -->
+    </div>
+  </div>
+
+
+</ion-content>

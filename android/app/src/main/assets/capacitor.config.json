@@ -1,0 +1,6 @@
+{
+	"appId": "com.yaatra.app",
+	"appName": "yaatra",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

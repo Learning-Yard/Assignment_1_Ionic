@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="d-flex bd-highlight">
+      <div class="p-2 flex-grow-1 bd-highlight"><ion-title>homepage</ion-title></div>
+      <div class="p-2 bd-highlight">
+        <ion-chip>
+        <ion-avatar>
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        </ion-avatar>
+        <ion-label>{{this.userName}}</ion-label>
+        <ion-icon name="circle"></ion-icon>
+      </ion-chip></div>
+      <div class="p-2 bd-highlight">
+        <ion-chip outline (click)="Logout()">
+        <ion-label color="danger">Logout</ion-label>
+      </ion-chip></div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button expand="block" (click)="goto(1)">Places to Visit</ion-button>
+  <ion-button expand="block" (click)="goto(2)">Places visited</ion-button>
+
+</ion-content>

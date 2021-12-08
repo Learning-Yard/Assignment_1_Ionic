@@ -1,0 +1,30 @@
+<ion-toolbar>
+  <ion-back-button defaultHref="homepage"></ion-back-button>
+</ion-toolbar>
+
+<ion-content>
+<ion-button expand="block" (click)="openModal()">+ Add</ion-button>
+
+<div *ngIf="this.toVisit.data?.length > 0; then ifBlock else elseBlock"></div>
+<ng-template #ifBlock>
+  <div *ngFor="let places of this.toVisit.data ;let i = index">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{i+1}} . {{places.place}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p *ngIf="places.preference == 1">Preference: Minimum</p>
+        <p *ngIf="places.preference == 2">Preference: Medium</p>
+        <p *ngIf="places.preference == 3">Preference: High</p>
+
+        <p>Estimated Cost: &#8377;{{places.estimatedCost}}</p>
+        <ion-icon name="trash" color="danger" slot="end" (click)="delete(i)"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ng-template>
+<ng-template #elseBlock>
+</ng-template>
+
+</ion-content>
